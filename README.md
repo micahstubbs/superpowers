@@ -56,6 +56,16 @@ Check that commands appear:
 
 Tell Codex to fetch https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md and follow the instructions.
 
+### Parallel Development Setup (Optional)
+
+If you plan to use multiple AI agents or work with others simultaneously:
+
+```bash
+./scripts/install-git-aliases.sh
+```
+
+See [docs/parallel-development.md](docs/parallel-development.md) for details.
+
 ## Quick Start
 
 ### Using Slash Commands
