@@ -44,6 +44,17 @@ Start by understanding the current project context, then ask questions one at a 
 - Use superpowers:using-git-worktrees to create isolated workspace
 - Use superpowers:writing-plans to create detailed implementation plan
 
+## Result Consumption (When Using Task Tool)
+
+If brainstorming launches research or exploration subagents:
+
+1. **Synthesize findings** - Don't just list what agent found
+2. **Extract design implications** - How do findings affect design?
+3. **Update design questions** - What new questions emerged?
+4. **Revise constraints** - Any new constraints discovered?
+
+See [docs/task-result-consumption-patterns.md](../../docs/task-result-consumption-patterns.md), Pattern 2: Synthesis and Planning.
+
 ## Key Principles
 
 - **One question at a time** - Don't overwhelm with multiple questions
