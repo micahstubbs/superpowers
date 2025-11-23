@@ -125,3 +125,14 @@ All four layers were necessary. During testing, each layer caught bugs the other
 - Debug logging identified structural misuse
 
 **Don't stop at one validation point.** Add checks at every layer.
+
+## Language-Specific Examples
+
+See complete defense-in-depth implementations:
+
+- [TypeScript](../docs/examples/typescript/defense-in-depth.md) - Express + Zod + Prisma
+- [Python](../docs/examples/python/defense-in-depth.md) - Flask + Pydantic
+- [Go](../docs/examples/go/defense-in-depth.md) - net/http + validator
+- [Ruby](../docs/examples/ruby/defense-in-depth.md) - Rails validations
+
+Each shows all three layers with realistic failure scenarios.
