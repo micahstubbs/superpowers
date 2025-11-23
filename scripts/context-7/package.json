@@ -1,0 +1,23 @@
+{
+  "name": "context-7",
+  "version": "1.0.0",
+  "description": "Lightweight documentation search with minimal context usage",
+  "type": "commonjs",
+  "main": "search.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "documentation",
+    "search",
+    "context",
+    "mdn",
+    "npm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.7",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
