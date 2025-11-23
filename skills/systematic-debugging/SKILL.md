@@ -275,6 +275,20 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 
 **But:** 95% of "no root cause" cases are incomplete investigation.
 
+## Result Consumption (When Using Task Tool)
+
+If you launch investigation subagents:
+
+1. **Read full reports** - Don't skim
+2. **Extract specifics** - File paths, line numbers, error messages
+3. **For each finding:**
+   - Verify the finding yourself
+   - Add to hypothesis list
+   - Note confidence level
+4. **Correlate** findings across multiple agents
+
+See [docs/task-tool-integration.md](../../docs/task-tool-integration.md) for patterns.
+
 ## Integration with Other Skills
 
 **This skill requires using:**

@@ -102,4 +102,31 @@ You: [Fix progress indicators]
 - Show code/tests that prove it works
 - Request clarification
 
+## Concurrent-Safety Notes
+
+**For parallel agent workflows:**
+
+When creating code review requests in environments where multiple agents or developers work simultaneously, use commit SHAs instead of git ranges to ensure the review content never changes.
+
+**Safe pattern:**
+```bash
+# Collect commit SHAs
+review_commits=$(git log main..HEAD --format="%H" | tac)
+
+# Use specific SHAs in review request
+gh pr create --title "..." --body "$(
+  echo "## Commits"
+  echo "$review_commits" | while read sha; do
+    echo "- $(git log -1 --format='%h %s' $sha)"
+  done
+  echo ""
+  echo "## Changes"
+  git show $review_commits
+)"
+```
+
+**Why:** Git ranges like `main...HEAD` are relative and change when `main` moves. Commit SHAs are immutable.
+
+See [docs/concurrent-code-review.md](../../docs/concurrent-code-review.md) for details.
+
 See template at: requesting-code-review/code-reviewer.md
