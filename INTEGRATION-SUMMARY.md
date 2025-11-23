@@ -1,4 +1,4 @@
-# Community Fork Integration Summary
+# Superpowers Reloaded - Integration Summary
 
 **Integration Date:** 2025-11-23
 **Base:** obra/superpowers

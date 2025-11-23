@@ -1,10 +1,10 @@
-# Superpowers Community Edition
+# Superpowers Reloaded
 
 > **This is a community-enhanced fork** integrating the best contributions from the obra/superpowers fork network.
 
 A comprehensive skills library of proven techniques, patterns, and workflows for AI coding assistants.
 
-## What's New in Community Edition
+## What's New in Reloaded
 
 **Critical Infrastructure:**
 - ✅ Git line-staging aliases for parallel agent development
