@@ -362,3 +362,14 @@ Otherwise → not TDD
 ```
 
 No exceptions without your human partner's permission.
+
+## Language-Specific Examples
+
+See language-specific TDD examples and patterns:
+
+- [TypeScript](../../docs/examples/typescript/test-driven-development.md) - Jest/Vitest patterns
+- [Python](../../docs/examples/python/test-driven-development.md) - pytest patterns
+- [Go](../../docs/examples/go/test-driven-development.md) - testing package patterns
+- [Ruby](../../docs/examples/ruby/test-driven-development.md) - RSpec patterns
+
+These examples show complete test files, commands, and implementations for each language.
