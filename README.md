@@ -19,6 +19,25 @@ Plus:
 
 Read the introduction: [Superpowers for Claude Code](https://blog.fsck.com/2025/10/09/superpowers/)
 
+## Platform Support
+
+Superpowers works with multiple AI coding assistants:
+
+- ✅ Claude Code (native plugin)
+- ✅ Cursor
+- ✅ GitHub Copilot
+- ✅ Gemini
+- ✅ OpenCode
+- ✅ Codex
+
+### Quick Setup
+
+```bash
+./scripts/setup-platform.sh
+```
+
+The script will detect your platform and configure superpowers automatically.
+
 ## Installation
 
 ### Claude Code (via Plugin Marketplace)
