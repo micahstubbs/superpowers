@@ -1,0 +1,47 @@
+# Superpowers for Cursor
+
+You have access to a comprehensive skills library in the `skills/` directory.
+
+## Available Skills
+
+To use a skill, read it from the `skills/` directory and follow its instructions exactly.
+
+**Testing Skills:**
+- `test-driven-development` - Write tests first, watch them fail, implement
+- `testing-anti-patterns` - Avoid testing mocks instead of behavior
+- `condition-based-waiting` - Replace arbitrary timeouts with condition polling
+
+**Debugging Skills:**
+- `systematic-debugging` - Four-phase framework: investigate, analyze, hypothesize, implement
+- `root-cause-tracing` - Trace bugs backward to find original trigger
+- `verification-before-completion` - Run verification before claiming success
+
+**Collaboration Skills:**
+- `brainstorming` - Refine rough ideas through Socratic method
+- `writing-plans` - Create detailed implementation plans
+- `requesting-code-review` - Process for requesting reviews
+- `receiving-code-review` - Process for receiving reviews
+
+**Development Skills:**
+- `using-git-worktrees` - Create isolated workspaces for feature work
+- `subagent-driven-development` - Dispatch subagents for independent tasks
+
+## Usage Pattern
+
+1. When user requests work, check if a skill applies
+2. Read the relevant skill: `skills/[skill-name].md`
+3. Follow the skill's instructions exactly
+4. For multi-step work, use the writing-plans skill first
+
+## Parallel Development
+
+If working with multiple developers or sessions:
+- Use git line-staging: `git stage-lines <file> <line-numbers>`
+- Use concurrent-safe code review patterns (see `docs/concurrent-code-review.md`)
+
+## Critical Rules
+
+- **Use skills when they apply** - Don't skip them
+- **Test-driven development** - Tests before implementation
+- **Verify before claiming completion** - Run verification commands
+- **Evidence over claims** - Show output, don't just say "it works"
