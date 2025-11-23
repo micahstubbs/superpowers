@@ -24,6 +24,25 @@ Thanks!
 - Jesse
 
 
+## Platform Support
+
+Superpowers works with multiple AI coding assistants:
+
+- ✅ Claude Code (native plugin)
+- ✅ Cursor
+- ✅ GitHub Copilot
+- ✅ Gemini
+- ✅ OpenCode
+- ✅ Codex
+
+### Quick Setup
+
+```bash
+./scripts/setup-platform.sh
+```
+
+The script will detect your platform and configure superpowers automatically.
+
 ## Installation
 
 **Note:** Installation differs by platform. Claude Code has a built-in plugin system. Codex and OpenCode require manual setup.
