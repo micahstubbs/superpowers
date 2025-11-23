@@ -16,14 +16,16 @@ Run the installation script:
 
 ### Usage
 
-**Stage specific lines:**
+**Stage specific changes interactively:**
 ```bash
-git stage-lines src/file.py 42 43 44
+git stage-lines src/file.py
+# Opens interactive mode - press 'y' to stage a hunk, 'n' to skip, 's' to split
 ```
 
-**Unstage specific lines:**
+**Unstage specific changes interactively:**
 ```bash
-git unstage-lines src/file.py 42
+git unstage-lines src/file.py
+# Opens interactive mode for unstaging
 ```
 
 ### Why This Matters
@@ -33,9 +35,9 @@ Traditional `git add` stages entire files. When multiple agents work in parallel
 - Agent B modifies lines 50-60 in file.py
 - Both run `git add file.py` → conflict!
 
-With line-staging:
-- Agent A: `git stage-lines file.py 10 11 12 ... 20`
-- Agent B: `git stage-lines file.py 50 51 52 ... 60`
+With interactive line-staging:
+- Agent A: `git stage-lines file.py` → select only lines 10-20 interactively
+- Agent B: `git stage-lines file.py` → select only lines 50-60 interactively
 - No conflict! Each agent stages only their changes.
 
 ## Concurrent-Safe Code Review
