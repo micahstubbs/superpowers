@@ -1,6 +1,34 @@
-# Superpowers
+# Superpowers Community Edition
+
+> **This is a community-enhanced fork** integrating the best contributions from the obra/superpowers fork network.
 
 A comprehensive skills library of proven techniques, patterns, and workflows for AI coding assistants.
+
+## What's New in Community Edition
+
+**Critical Infrastructure:**
+- ✅ Git line-staging aliases for parallel agent development
+- ✅ Concurrent-safe code review patterns
+- ✅ Task tool result consumption patterns
+
+**Platform Support:**
+- ✅ Multi-platform support (Claude Code, Cursor, Copilot, Gemini, OpenCode)
+- ✅ Platform auto-detection and setup
+
+**Language Accessibility:**
+- ✅ TypeScript, Python, Go examples for all core skills
+- ✅ Language-specific TDD and defense-in-depth patterns
+
+**New Skills:**
+- ✅ Characterization testing (legacy code)
+- ✅ Strangler fig pattern (incremental refactoring)
+- ✅ Context-7 (lightweight documentation search)
+
+**Credit:** Contributions from anvanvan/flows, complexthings/superpowers, cuivienor/superpowers, and others.
+
+See [fork-network-analysis.md](fork-network-analysis.md) for full attribution.
+
+---
 
 ## What You Get
 
@@ -185,6 +213,19 @@ Skills update automatically when you update the plugin:
 ```bash
 /plugin update superpowers
 ```
+
+## Community Contributors
+
+This community fork integrates contributions from:
+
+- **anvanvan/flows** - Parallel agent infrastructure, Task tool patterns
+- **complexthings/superpowers** - Multi-platform support, MCP replacements
+- **cuivienor/superpowers** - Language-specific examples, monorepo support
+- **jpcaparas/superpowers-laravel** - Framework plugin pattern
+- **b0o/superpowers** - Git worktrees documentation
+- **obra/superpowers** (upstream) - Original skills library
+
+Full attribution in [fork-network-analysis.md](fork-network-analysis.md).
 
 ## License
 
