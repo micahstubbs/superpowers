@@ -1,8 +1,36 @@
-# Superpowers
+# Superpowers Reloaded
+
+> **This is a community-enhanced fork** integrating the best contributions from the obra/superpowers fork network.
 
 Superpowers is a complete software development workflow for your coding agents, built on top of a set of composable "skills" and some initial instructions that make sure your agent uses them.
 
-## How it works
+## What's New
+
+**Critical Infrastructure:**
+- ✅ Git line-staging aliases for parallel agent development
+- ✅ Concurrent-safe code review patterns
+- ✅ Task tool result consumption patterns
+
+**Platform Support:**
+- ✅ Multi-platform support (Claude Code, Cursor, Copilot, Gemini, OpenCode)
+- ✅ Platform auto-detection and setup
+
+**Language Accessibility:**
+- ✅ TypeScript, Python, Go examples for all core skills
+- ✅ Language-specific TDD and defense-in-depth patterns
+
+**New Skills:**
+- ✅ Characterization testing (legacy code)
+- ✅ Strangler fig pattern (incremental refactoring)
+- ✅ Context-7 (lightweight documentation search)
+
+**Credit:** Contributions from anvanvan/flows, complexthings/superpowers, cuivienor/superpowers, and others.
+
+See [fork-network-analysis.md](fork-network-analysis.md) for full attribution.
+
+---
+
+## What You Get
 
 It starts from the moment you fire up your coding agent. As soon as it sees that you're building something, it *doesn't* just jump into trying to write code. Instead, it steps back and asks you what you're really trying to do. 
 
@@ -167,6 +195,19 @@ Skills update automatically when you update the plugin:
 ```bash
 /plugin update superpowers
 ```
+
+## Community Contributors
+
+This community fork integrates contributions from:
+
+- **[anvanvan/flows](https://github.com/anvanvan/flows)** - Parallel agent infrastructure, Task tool patterns
+- **[complexthings/superpowers](https://github.com/complexthings/superpowers)** - Multi-platform support, MCP replacements
+- **[cuivienor/superpowers](https://github.com/cuivienor/superpowers)** - Language-specific examples, monorepo support
+- **[jpcaparas/superpowers-laravel](https://github.com/jpcaparas/superpowers-laravel)** - Framework plugin pattern
+- **[b0o/superpowers](https://github.com/b0o/superpowers)** - Git worktrees documentation
+- **[obra/superpowers](https://github.com/obra/superpowers)** (upstream) - Original skills library
+
+Full attribution in [fork-network-analysis.md](fork-network-analysis.md).
 
 ## License
 
