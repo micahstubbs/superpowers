@@ -5,6 +5,16 @@ description: Use when you need to search documentation or fetch web content with
 
 # Context-7: Lightweight Documentation Search
 
+## Prerequisites
+
+**Requires:** Node.js runtime
+
+Install dependencies:
+```bash
+cd scripts/context-7
+npm install
+```
+
 ## When to Use
 
 - Need to look up API documentation
@@ -16,6 +26,7 @@ description: Use when you need to search documentation or fetch web content with
 - You already know the answer
 - Documentation is in local files (use Read tool)
 - Need interactive browsing (use MCP browser tool)
+- Node.js not available
 
 ## The Problem
 

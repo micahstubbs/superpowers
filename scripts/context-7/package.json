@@ -2,6 +2,7 @@
   "name": "context-7",
   "version": "1.0.0",
   "description": "Lightweight documentation search with minimal context usage",
+  "type": "commonjs",
   "main": "search.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
