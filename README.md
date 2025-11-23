@@ -218,12 +218,12 @@ Skills update automatically when you update the plugin:
 
 This community fork integrates contributions from:
 
-- **anvanvan/flows** - Parallel agent infrastructure, Task tool patterns
-- **complexthings/superpowers** - Multi-platform support, MCP replacements
-- **cuivienor/superpowers** - Language-specific examples, monorepo support
-- **jpcaparas/superpowers-laravel** - Framework plugin pattern
-- **b0o/superpowers** - Git worktrees documentation
-- **obra/superpowers** (upstream) - Original skills library
+- **[anvanvan/flows](https://github.com/anvanvan/flows)** - Parallel agent infrastructure, Task tool patterns
+- **[complexthings/superpowers](https://github.com/complexthings/superpowers)** - Multi-platform support, MCP replacements
+- **[cuivienor/superpowers](https://github.com/cuivienor/superpowers)** - Language-specific examples, monorepo support
+- **[jpcaparas/superpowers-laravel](https://github.com/jpcaparas/superpowers-laravel)** - Framework plugin pattern
+- **[b0o/superpowers](https://github.com/b0o/superpowers)** - Git worktrees documentation
+- **[obra/superpowers](https://github.com/obra/superpowers)** (upstream) - Original skills library
 
 Full attribution in [fork-network-analysis.md](fork-network-analysis.md).
 

@@ -160,7 +160,7 @@ git log upstream/main..cuivienor/main
 ## Contact
 
 For questions about integrated features:
-- Parallel development: See anvanvan/flows
-- Multi-platform support: See complexthings/superpowers
-- Language examples: See cuivienor/superpowers
-- Original skills: See obra/superpowers
+- Parallel development: See [anvanvan/flows](https://github.com/anvanvan/flows)
+- Multi-platform support: See [complexthings/superpowers](https://github.com/complexthings/superpowers)
+- Language examples: See [cuivienor/superpowers](https://github.com/cuivienor/superpowers)
+- Original skills: See [obra/superpowers](https://github.com/obra/superpowers)
