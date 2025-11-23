@@ -4,7 +4,7 @@
 
 A comprehensive skills library of proven techniques, patterns, and workflows for AI coding assistants.
 
-## What's New in Reloaded
+## What's New
 
 **Critical Infrastructure:**
 - ✅ Git line-staging aliases for parallel agent development
