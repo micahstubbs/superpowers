@@ -47,6 +47,13 @@ echo "✓ Platform: $PLATFORM"
 echo ""
 echo "📦 Setting up superpowers for $PLATFORM..."
 
+# Validate platforms directory exists
+if [ ! -d "platforms/$PLATFORM" ]; then
+    echo "Error: Platform files not found. Are you in the superpowers directory?"
+    echo "Expected: platforms/$PLATFORM/"
+    exit 1
+fi
+
 # Setup based on platform
 case $PLATFORM in
     "cursor")

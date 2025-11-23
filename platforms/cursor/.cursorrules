@@ -29,7 +29,7 @@ To use a skill, read it from the `skills/` directory and follow its instructions
 ## Usage Pattern
 
 1. When user requests work, check if a skill applies
-2. Read the relevant skill: `skills/[skill-name].md`
+2. Read the relevant skill: `skills/[skill-name]/SKILL.md`
 3. Follow the skill's instructions exactly
 4. For multi-step work, use the writing-plans skill first
 

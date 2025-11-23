@@ -13,7 +13,7 @@ When starting a task:
 
 **Test-Driven Development:**
 ```
-Read: skills/test-driven-development.md
+Read: skills/test-driven-development/SKILL.md
 1. Write test
 2. Watch it fail
 3. Implement minimal code
@@ -23,7 +23,7 @@ Read: skills/test-driven-development.md
 
 **Systematic Debugging:**
 ```
-Read: skills/systematic-debugging.md
+Read: skills/systematic-debugging/SKILL.md
 1. Investigate - gather facts
 2. Analyze - find patterns
 3. Hypothesize - form theories
@@ -32,13 +32,13 @@ Read: skills/systematic-debugging.md
 
 **Planning Complex Work:**
 ```
-Read: skills/writing-plans.md
+Read: skills/writing-plans/SKILL.md
 Create bite-sized implementation plan before coding.
 ```
 
 ## Anti-Patterns to Avoid
 
-See `skills/testing-anti-patterns.md` before writing tests.
+See `skills/testing-anti-patterns/SKILL.md` before writing tests.
 
 Common mistakes:
 - Testing mock behavior instead of real behavior
@@ -52,4 +52,4 @@ Before marking work complete:
 - Show real output
 - Don't just claim "it works"
 
-See `skills/verification-before-completion.md`
+See `skills/verification-before-completion/SKILL.md`

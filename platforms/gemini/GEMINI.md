@@ -24,7 +24,7 @@ The `skills/` directory contains systematic approaches to common development tas
 
 ## Usage
 
-1. Read the skill file: `skills/[skill-name].md`
+1. Read the skill file: `skills/[skill-name]/SKILL.md`
 2. Follow instructions exactly
 3. Use checklist if provided
 4. Verify completion criteria
