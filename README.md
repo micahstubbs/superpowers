@@ -164,6 +164,7 @@ Skills activate automatically when relevant. For example:
 - **using-git-worktrees** - Parallel development branches
 - **finishing-a-development-branch** - Merge/PR decision workflow
 - **subagent-driven-development** - Fast iteration with quality gates
+- **knowledge-lineages** - Track architectural decisions across AI sessions
 
 **Meta** (`skills/meta/`)
 - **writing-skills** - Create new skills following best practices
