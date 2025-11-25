@@ -39,6 +39,11 @@ Start by understanding the current project context, then ask questions one at a 
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
+**Decision Log (optional):**
+- Ask: "Would you like to add key decisions from this design to the project decision log?"
+- If yes: Use @superpowers:knowledge-lineages to capture architectural choices
+- This preserves the "why" for future AI sessions
+
 **Implementation (if continuing):**
 - Ask: "Ready to set up for implementation?"
 - Use superpowers:using-git-worktrees to create isolated workspace
