@@ -301,6 +301,16 @@ These techniques are part of systematic debugging and available in this director
 - **superpowers:test-driven-development** - For creating failing test case (Phase 4, Step 1)
 - **superpowers:verification-before-completion** - Verify fix worked before claiming success
 
+## After Debugging Complete
+
+**Document for future sessions**
+
+If this was a non-obvious bug that took significant investigation, use @superpowers:knowledge-lineages with:
+- Context: What symptoms led to investigation
+- Decision: The root cause and fix
+- Why not: Other hypotheses that were ruled out
+- Tags: #lesson-learned plus relevant domain tags
+
 ## Real-World Impact
 
 From debugging sessions:

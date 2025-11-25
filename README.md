@@ -163,6 +163,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/obra/superp
 - **using-git-worktrees** - Parallel development branches
 - **finishing-a-development-branch** - Merge/PR decision workflow
 - **subagent-driven-development** - Fast iteration with two-stage review (spec compliance, then code quality)
+- **knowledge-lineages** - Track architectural decisions across AI sessions
 
 **Meta**
 - **writing-skills** - Create new skills following best practices (includes testing methodology)
