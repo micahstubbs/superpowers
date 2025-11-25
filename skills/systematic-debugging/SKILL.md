@@ -302,14 +302,9 @@ See [docs/task-tool-integration.md](../../docs/task-tool-integration.md) for pat
 
 ## After Debugging Complete
 
-**Optional: Document for future sessions**
+**Document for future sessions**
 
-If this was a non-obvious bug that took significant investigation:
-
-Ask: "This root cause might be worth documenting so future sessions don't
-re-investigate. Add to the project decision log?"
-
-If yes: Use @superpowers:knowledge-lineages with:
+If this was a non-obvious bug that took significant investigation, use @superpowers:knowledge-lineages with:
 - Context: What symptoms led to investigation
 - Decision: The root cause and fix
 - Why not: Other hypotheses that were ruled out
