@@ -300,6 +300,21 @@ See [docs/task-tool-integration.md](../../docs/task-tool-integration.md) for pat
 - **condition-based-waiting** - Replace arbitrary timeouts identified in Phase 2
 - **verification-before-completion** - Verify fix worked before claiming success
 
+## After Debugging Complete
+
+**Optional: Document for future sessions**
+
+If this was a non-obvious bug that took significant investigation:
+
+Ask: "This root cause might be worth documenting so future sessions don't
+re-investigate. Add to the project decision log?"
+
+If yes: Use @superpowers:knowledge-lineages with:
+- Context: What symptoms led to investigation
+- Decision: The root cause and fix
+- Why not: Other hypotheses that were ruled out
+- Tags: #lesson-learned plus relevant domain tags
+
 ## Real-World Impact
 
 From debugging sessions:
