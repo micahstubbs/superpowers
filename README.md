@@ -80,7 +80,7 @@ The script will detect your platform and configure superpowers automatically.
 In Claude Code, register the marketplace first:
 
 ```bash
-/plugin marketplace add obra/superpowers-marketplace
+/plugin marketplace add micahstubbs/superpowers
 ```
 
 Then install the plugin from this marketplace:
@@ -88,6 +88,16 @@ Then install the plugin from this marketplace:
 ```bash
 /plugin install superpowers@superpowers-marketplace
 ```
+
+### Double Shot Latte (Optional)
+
+Tired of "Would you like me to continue?" interruptions? Install the **double-shot-latte** plugin:
+
+```bash
+/plugin install double-shot-latte@superpowers-marketplace
+```
+
+This plugin uses Claude to judge whether Claude should continue working, automatically continuing multi-step tasks when next steps are obvious.
 
 ### Verify Installation
 
