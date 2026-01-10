@@ -15,6 +15,15 @@
         "name": "Jesse Vincent",
         "email": "jesse@fsck.com"
       }
+    },
+    {
+      "name": "double-shot-latte",
+      "description": "Eliminates interruptions by automatically evaluating whether Claude should continue multi-step tasks rather than repeatedly asking for permission",
+      "version": "1.0.0",
+      "source": "https://github.com/micahstubbs/double-shot-latte",
+      "author": {
+        "name": "micahstubbs"
+      }
     }
   ]
 }
