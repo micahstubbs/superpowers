@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: Use when creating or developing, before writing code or implementation plans - refines rough ideas into fully-formed designs through collaborative questioning, alternative exploration, and incremental validation. Don't use during clear 'mechanical' processes
+description: "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation."
 ---
 
 # Brainstorming Ideas Into Designs
@@ -39,25 +39,10 @@ Start by understanding the current project context, then ask questions one at a 
 - Use elements-of-style:writing-clearly-and-concisely skill if available
 - Commit the design document to git
 
-**Decision Log:**
-- Use @superpowers:knowledge-lineages to capture architectural choices from this design
-- This preserves the "why" for future AI sessions
-
 **Implementation (if continuing):**
 - Ask: "Ready to set up for implementation?"
 - Use superpowers:using-git-worktrees to create isolated workspace
 - Use superpowers:writing-plans to create detailed implementation plan
-
-## Result Consumption (When Using Task Tool)
-
-If brainstorming launches research or exploration subagents:
-
-1. **Synthesize findings** - Don't just list what agent found
-2. **Extract design implications** - How do findings affect design?
-3. **Update design questions** - What new questions emerged?
-4. **Revise constraints** - Any new constraints discovered?
-
-See [docs/task-result-consumption-patterns.md](../../docs/task-result-consumption-patterns.md), Pattern 2: Synthesis and Planning.
 
 ## Key Principles
 

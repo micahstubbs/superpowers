@@ -1,6 +1,6 @@
 ---
 name: systematic-debugging
-description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes - four-phase framework (root cause investigation, pattern analysis, hypothesis testing, implementation) that ensures understanding before attempting solutions
+description: Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
 ---
 
 # Systematic Debugging
@@ -111,7 +111,7 @@ You MUST complete each phase before proceeding to the next.
 
    **WHEN error is deep in call stack:**
 
-   **REQUIRED SUB-SKILL:** Use superpowers:root-cause-tracing for backward tracing technique
+   See `root-cause-tracing.md` in this directory for the complete backward tracing technique.
 
    **Quick version:**
    - Where does bad value originate?
@@ -176,7 +176,7 @@ You MUST complete each phase before proceeding to the next.
    - Automated test if possible
    - One-off test script if no framework
    - MUST have before fixing
-   - **REQUIRED SUB-SKILL:** Use superpowers:test-driven-development for writing proper failing tests
+   - Use the `superpowers:test-driven-development` skill for writing proper failing tests
 
 2. **Implement Single Fix**
    - Address the root cause identified
@@ -275,40 +275,17 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 
 **But:** 95% of "no root cause" cases are incomplete investigation.
 
-## Result Consumption (When Using Task Tool)
+## Supporting Techniques
 
-If you launch investigation subagents:
+These techniques are part of systematic debugging and available in this directory:
 
-1. **Read full reports** - Don't skim
-2. **Extract specifics** - File paths, line numbers, error messages
-3. **For each finding:**
-   - Verify the finding yourself
-   - Add to hypothesis list
-   - Note confidence level
-4. **Correlate** findings across multiple agents
+- **`root-cause-tracing.md`** - Trace bugs backward through call stack to find original trigger
+- **`defense-in-depth.md`** - Add validation at multiple layers after finding root cause
+- **`condition-based-waiting.md`** - Replace arbitrary timeouts with condition polling
 
-See [docs/task-tool-integration.md](../../docs/task-tool-integration.md) for patterns.
-
-## Integration with Other Skills
-
-**This skill requires using:**
-- **root-cause-tracing** - REQUIRED when error is deep in call stack (see Phase 1, Step 5)
-- **test-driven-development** - REQUIRED for creating failing test case (see Phase 4, Step 1)
-
-**Complementary skills:**
-- **defense-in-depth** - Add validation at multiple layers after finding root cause
-- **condition-based-waiting** - Replace arbitrary timeouts identified in Phase 2
-- **verification-before-completion** - Verify fix worked before claiming success
-
-## After Debugging Complete
-
-**Document for future sessions**
-
-If this was a non-obvious bug that took significant investigation, use @superpowers:knowledge-lineages with:
-- Context: What symptoms led to investigation
-- Decision: The root cause and fix
-- Why not: Other hypotheses that were ruled out
-- Tags: #lesson-learned plus relevant domain tags
+**Related skills:**
+- **superpowers:test-driven-development** - For creating failing test case (Phase 4, Step 1)
+- **superpowers:verification-before-completion** - Verify fix worked before claiming success
 
 ## Real-World Impact
 
