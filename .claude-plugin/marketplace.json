@@ -10,7 +10,10 @@
       "name": "superpowers",
       "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
       "version": "4.0.3",
-      "source": "./",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/micahstubbs/superpowers.git"
+      },
       "author": {
         "name": "Jesse Vincent",
         "email": "jesse@fsck.com"
@@ -20,7 +23,10 @@
       "name": "double-shot-latte",
       "description": "Eliminates interruptions by automatically evaluating whether Claude should continue multi-step tasks rather than repeatedly asking for permission",
       "version": "1.0.0",
-      "source": "https://github.com/micahstubbs/double-shot-latte",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/micahstubbs/double-shot-latte.git"
+      },
       "author": {
         "name": "micahstubbs"
       }
