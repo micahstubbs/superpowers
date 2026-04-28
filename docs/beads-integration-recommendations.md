@@ -95,7 +95,7 @@ The plan document gets an **"## Issue Tracking"** appendix listing the IDs, and 
 # If beads mode and issue IDs were captured by the upstream skill (writing-plans / sda-d / executing-plans):
 # Close every in_progress issue whose ID appears in commit messages on the merged range.
 git log <merge-base>..HEAD --format=%B | grep -oE 'bd-[a-z0-9]+(\.[0-9]+)?' | sort -u | while read id; do
-  status=$(br show "$id" --json 2>/dev/null | jq -r .status)
+  status=$(br show "$id" --json 2>/dev/null | jq -r '.[0].status')
   [ "$status" = "in_progress" ] && br close "$id" -r "Delivered in <merge-sha>"
 done
 ```

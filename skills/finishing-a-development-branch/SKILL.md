@@ -170,7 +170,7 @@ git log <base>..HEAD --format=%B | grep -oE 'bd-[a-z0-9]+(\.[0-9]+)?' | sort -u
 For each ID found, close only if currently `in_progress` (avoids "already closed" errors when an upstream skill closed it earlier):
 
 ```bash
-status=$(br show "$id" --json 2>/dev/null | jq -r .status)
+status=$(br show "$id" --json 2>/dev/null | jq -r '.[0].status')
 if [ "$status" = "in_progress" ]; then
   br close "$id" -r "Delivered in <merge-sha-or-pr-link>"
 fi
