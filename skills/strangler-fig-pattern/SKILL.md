@@ -196,6 +196,12 @@ def should_use_new_generator(format):
 
 When `br` (beads_rust) is available AND a `.beads/*.db` is reachable, **automatically** mirror migration milestones to beads issues. No prompt — beads is part of the user's workflow. When unavailable, silently skip.
 
+**Detect at start:**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
 The migration is inherently multi-phase (1% → 10% → 50% → 100% → remove old). Each milestone is a discrete unit of work that the team will revisit weekly, so it maps cleanly to a beads issue with explicit dependencies:
 
 ```bash
