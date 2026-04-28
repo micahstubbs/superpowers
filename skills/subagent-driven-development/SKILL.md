@@ -82,6 +82,41 @@ digraph process {
 }
 ```
 
+## Issue Tracking (Optional Beads Integration)
+
+When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, the controller can mirror plan tasks to beads issues. When unavailable, skip this entire section — TodoWrite alone is sufficient.
+
+**Detect at start:**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
+If beads mode is on:
+
+**Map plan tasks → issues.** If the plan already names issue IDs (e.g., `bd-xyz1`), reuse them — don't create duplicates. Otherwise, create one issue per task; use an epic when the plan has 4+ tasks:
+
+```bash
+br create --title "Epic: <plan title>" --type=feature --priority=1 [--labels=<scope>]
+br create --title "<task name>" --type=task --priority=2 --parent=<epic-id>
+br dep add <task-B> <task-A>   # for any deps the plan declares
+```
+
+Capture returned IDs in TodoWrite so the two stay in sync.
+
+**Status transitions tied to the existing process:**
+
+| Existing step                            | Beads command                                                        |
+|------------------------------------------|----------------------------------------------------------------------|
+| Dispatch implementer subagent            | `br update <id> --status=in_progress`                                |
+| Spec or code reviewer finds issues       | leave `in_progress`; surface findings in the next dispatch           |
+| Spec ✅ AND code quality ✅                | `br close <id> -r "completed in <commit-sha>: <one-line summary>"`   |
+| After every state change                 | `br sync --flush-only`                                               |
+
+**Pass the issue ID to subagents.** Include `Beads issue: <id>` in each dispatch prompt so commit messages and reviewer reports thread it through. The prompt templates accept this optional field.
+
+**Verify the write after each state change.** `br update --status` is known to echo a misleading title/diff. Confirm with `br show <id>` (or `grep '"<id>"' .beads/issues.jsonl` after sync) before moving on.
+
 ## Prompt Templates
 
 - `./implementer-prompt.md` - Dispatch implementer subagent
@@ -210,6 +245,7 @@ Done!
 - Let implementer self-review replace actual review (both are needed)
 - **Start code quality review before spec compliance is ✅** (wrong order)
 - Move to next task while either review has open issues
+- Run `br` commands from inside subagents (controller owns issue lifecycle; subagents only reference the ID)
 
 **If subagent asks questions:**
 - Answer clearly and completely
@@ -238,3 +274,6 @@ Done!
 
 **Alternative workflow:**
 - **superpowers:executing-plans** - Use for parallel session instead of same-session execution
+
+**Optional issue tracking:**
+- **beads_rust (`br`)** - When available, the controller mirrors plan tasks to beads issues for status, dependencies, and audit trail. See _Issue Tracking_ above.
