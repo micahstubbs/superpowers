@@ -192,6 +192,33 @@ def should_use_new_generator(format):
     return False
 ```
 
+### Tracking with Beads (Automatic When Available)
+
+When `br` (beads_rust) is available AND a `.beads/*.db` is reachable, **automatically** mirror migration milestones to beads issues. No prompt — beads is part of the user's workflow. When unavailable, silently skip.
+
+The migration is inherently multi-phase (1% → 10% → 50% → 100% → remove old). Each milestone is a discrete unit of work that the team will revisit weekly, so it maps cleanly to a beads issue with explicit dependencies:
+
+```bash
+br create --title "Strangler-fig epic: <component>" --type=feature --priority=1 --labels=strangler-fig
+br create --title "Add abstraction layer + 1% rollout" --type=task --parent=<epic>
+br create --title "10% rollout" --type=task --parent=<epic>
+br create --title "50% rollout" --type=task --parent=<epic>
+br create --title "100% rollout" --type=task --parent=<epic>
+br create --title "Remove old implementation" --type=task --parent=<epic>
+
+# Encode the rollout dependency chain
+br dep add <10%-id> <1%-id>
+br dep add <50%-id> <10%-id>
+br dep add <100%-id> <50%-id>
+br dep add <remove-id> <100%-id>
+
+br sync --flush-only
+```
+
+Each percentage closes when monitoring confirms no regression. Use `br update <id> --notes "Monitoring evidence: error rate <X>, p95 <Y>ms over <duration>"` to preserve evidence inside the issue for the post-mortem. Close with `br close <id> -r "100% rolled out at <commit-sha>: no regressions over <window>"`.
+
+**If a rollback is needed**, leave the issue open and update notes with the reason. Beads then becomes the audit trail of the migration.
+
 ### Step 6: Remove Old Implementation
 
 **Once all use cases migrated and stable:**

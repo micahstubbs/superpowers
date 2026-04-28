@@ -149,14 +149,48 @@ git worktree remove <worktree-path>
 
 **For Option 3:** Keep worktree.
 
+## Issue Tracking (Optional Beads Integration)
+
+When `br` (beads_rust) is available AND a `.beads/*.db` is reachable, **automatically** close any in-progress beads issues whose IDs appear in the merged commit range. No prompt — beads is part of the user's workflow. When unavailable, silently skip.
+
+**Detect at start:**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
+**Apply for options 1 (merge locally), 2 (push and PR), and 4 (discard).** Skip for option 3 (keep as-is) — the work isn't complete yet.
+
+**Find issue IDs in the merged range** (works for both options 1/2 because the IDs appear in commit messages from `subagent-driven-development` or `executing-plans`):
+
+```bash
+git log <base>..HEAD --format=%B | grep -oE 'bd-[a-z0-9]+(\.[0-9]+)?' | sort -u
+```
+
+For each ID found that is still `IN_PROGRESS`:
+
+```bash
+br close <id> -r "Delivered in <merge-sha-or-pr-link>"
+```
+
+Then `br sync --flush-only`.
+
+**For option 4 (discard):** flag the issues rather than closing them — the work didn't ship.
+
+```bash
+for id in <ids>; do
+  br update "$id" --status=open --notes "Branch discarded; work not shipped"
+done
+```
+
 ## Quick Reference
 
-| Option | Merge | Push | Keep Worktree | Cleanup Branch |
-|--------|-------|------|---------------|----------------|
-| 1. Merge locally | ✓ | - | - | ✓ |
-| 2. Create PR | - | ✓ | ✓ | - |
-| 3. Keep as-is | - | - | ✓ | - |
-| 4. Discard | - | - | - | ✓ (force) |
+| Option | Merge | Push | Keep Worktree | Cleanup Branch | Close Beads |
+|--------|-------|------|---------------|----------------|-------------|
+| 1. Merge locally | ✓ | - | - | ✓ | ✓ |
+| 2. Create PR | - | ✓ | ✓ | - | ✓ (on merge) |
+| 3. Keep as-is | - | - | ✓ | - | - |
+| 4. Discard | - | - | - | ✓ (force) | reopen + note |
 
 ## Common Mistakes
 

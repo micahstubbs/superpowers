@@ -275,6 +275,24 @@ If systematic investigation reveals issue is truly environmental, timing-depende
 
 **But:** 95% of "no root cause" cases are incomplete investigation.
 
+## Tracking in Beads (Automatic When Available)
+
+When `br` (beads_rust) is available AND a `.beads/*.db` is reachable, **automatically** track non-trivial bugs through the four phases. No prompt — beads is part of the user's workflow; if `br` is installed, use it. When unavailable, silently skip.
+
+**Detect at start:**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
+If beads mode is on, file an issue automatically in either of these two cases (skip for trivial single-session fixes — the four phases work without ceremony):
+
+**Case A — Multi-component or multi-session bug** (Phase 1, "WHEN system has multiple components"): At investigation start, `br create --type=bug --priority=<from-symptom> --title "<symptom>"`. Update to `in_progress` while investigating; close on Phase 4 commit with `-r "Root cause: <X>; fix in <commit-sha>"`.
+
+**Case B — Architectural pivot** (Phase 4.5, "If 3+ Fixes Failed"): If an issue already exists for this bug, append failed-hypothesis notes (`br update <id> --notes "Fix attempt N failed: <reason>"`) and flag as `--status=blocked` pending architectural discussion. The issue body then carries the "why not" history for `knowledge-lineages` to reference later.
+
+**Skip beads when:** trivial bug, single-session fix, no architectural questions. The four-phase discipline already provides the structure.
+
 ## Supporting Techniques
 
 These techniques are part of systematic debugging and available in this directory:
