@@ -2,8 +2,8 @@
   "name": "superpowers-dev",
   "description": "Development marketplace for Superpowers core skills library",
   "owner": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com"
+    "name": "Micah Stubbs",
+    "email": "dev@micah.fyi"
   },
   "plugins": [
     {
@@ -15,8 +15,8 @@
         "url": "https://github.com/micahstubbs/superpowers.git"
       },
       "author": {
-        "name": "Jesse Vincent",
-        "email": "jesse@fsck.com"
+        "name": "Micah Stubbs",
+        "email": "dev@micah.fyi"
       }
     },
     {

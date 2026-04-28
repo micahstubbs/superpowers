@@ -3,8 +3,8 @@
   "version": "4.2.0",
   "description": "Core skills library for Codex CLI: TDD, debugging, collaboration patterns, and proven techniques",
   "author": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com"
+    "name": "Micah Stubbs",
+    "email": "dev@micah.fyi"
   },
   "homepage": "https://github.com/obra/superpowers",
   "repository": "https://github.com/obra/superpowers",
@@ -15,7 +15,7 @@
     "displayName": "Superpowers",
     "shortDescription": "Skills library: TDD, debugging, collaboration patterns",
     "longDescription": "Bundles proven skills for Codex agents — brainstorming, test-driven development, systematic debugging, requesting and receiving code review, executing plans, subagent-driven development, and more. Each skill is a self-contained workflow the agent invokes when relevant.",
-    "developerName": "Jesse Vincent",
+    "developerName": "Micah Stubbs",
     "category": "Productivity",
     "websiteURL": "https://github.com/obra/superpowers"
   }
