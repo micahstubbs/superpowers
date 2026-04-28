@@ -49,6 +49,31 @@ After all tasks complete and verified:
 - **REQUIRED SUB-SKILL:** Use superpowers:finishing-a-development-branch
 - Follow that skill to verify tests, present options, execute choice
 
+## Issue Tracking (Optional Beads Integration)
+
+When `br` (beads_rust) is available AND the project has a reachable `.beads/*.db`, **automatically** thread issue lifecycle through the existing process steps. Do not ask — beads is part of the user's workflow; if `br` is installed, use it. When unavailable, silently skip this section (TodoWrite alone is sufficient).
+
+If the dispatch passed `Beads epic: <id>`, use it; otherwise find the plan's mirrored issues with `br list --label superpowers` (or by parent epic from the plan's "## Issue Tracking" appendix).
+
+**Detect at start (Step 1):**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
+If beads mode is on, capture the IDs alongside TodoWrite entries — no prompt needed.
+
+**Status transitions tied to existing process:**
+
+| Existing step                                    | Beads command                                                          |
+|--------------------------------------------------|------------------------------------------------------------------------|
+| Step 2 "Mark as in_progress" (TodoWrite)         | `br update <id> --status=in_progress`                                  |
+| Step 3 "Report. Ready for feedback."             | leave `in_progress`; controller closes after partner approval          |
+| Step 4 batch complete after partner approves     | `br close <id> -r "completed in <commit-sha>"` per task in the batch   |
+| After every state change                         | `br sync --flush-only`                                                 |
+
+**Verify the write after each state change.** `br update --status` is known to echo a misleading title/diff. Confirm with `br show <id>` (or `grep '"<id>"' .beads/issues.jsonl` after sync) before moving on.
+
 ## When to Stop and Ask for Help
 
 **STOP executing immediately when:**

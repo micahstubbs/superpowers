@@ -84,7 +84,7 @@ digraph process {
 
 ## Issue Tracking (Optional Beads Integration)
 
-When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, the controller can mirror plan tasks to beads issues. When unavailable, skip this entire section — TodoWrite alone is sufficient.
+When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, the controller **automatically** mirrors plan tasks to beads issues — no prompt. Beads is part of the user's workflow; if `br` is installed, use it. When unavailable, silently skip this entire section (TodoWrite alone is sufficient).
 
 **Detect at start:**
 

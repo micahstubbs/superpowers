@@ -96,7 +96,7 @@ git commit -m "feat: add specific feature"
 
 ## Issue Tracking (Optional Beads Integration)
 
-When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, you can mirror plan tasks to beads issues so the executor (subagent-driven-development or executing-plans) can pick them up and track lifecycle.
+When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, **automatically** mirror plan tasks to beads issues so the executor (subagent-driven-development or executing-plans) can pick them up and track lifecycle. Do not ask the user — beads is part of their workflow; if `br` is installed, use it.
 
 **Detect at start:**
 
@@ -104,7 +104,7 @@ When `br` (beads_rust) is available AND the project (or any ancestor) contains a
 command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
 ```
 
-If beads mode is on, after saving the plan ask: **"Mirror this plan into beads issues now?"** If yes:
+If beads mode is on, after saving the plan, mirror it without prompting:
 
 ```bash
 # One epic for the plan
@@ -130,7 +130,7 @@ Append an **"## Issue Tracking"** section to the saved plan listing the IDs:
 - ...
 ```
 
-When beads mode is off (or the user declines), skip this entire section — the plan works without it.
+When beads mode is off, silently skip this entire section — the plan works without it.
 
 ## Execution Handoff
 

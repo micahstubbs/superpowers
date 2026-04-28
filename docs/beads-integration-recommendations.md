@@ -17,6 +17,7 @@ Skills are ranked **high / medium / low / skip**. Every recommendation is **pure
 Before per-skill notes, these conventions should be consistent across any new integration:
 
 - **Detection at process start.** `command -v br >/dev/null && br ready --json >/dev/null 2>&1` gates the entire optional path.
+- **Auto-detect, never prompt.** When detection succeeds, USE beads silently. Never ask the user "mirror this plan?" or "track in beads?". When detection fails, silently skip. Pre-action confirmation is friction — beads is part of the user's workflow if `br` is installed.
 - **Controller owns issue state, subagents reference IDs only.** Subagents thread `Beads issue: <id>` into commits/reports; they never call `br update` or `br close`.
 - **Status transitions tie to existing process steps**, not new ones. Mapping table per skill should reuse existing decision points.
 - **`br sync --flush-only` after every state change.** Never auto-commits.
@@ -31,7 +32,7 @@ Before per-skill notes, these conventions should be consistent across any new in
 
 **Proposed integration:**
 
-After saving the plan, controller offers a third option: **"Mirror this plan into beads issues now?"** If yes:
+When beads mode is on, the controller **automatically** mirrors plan tasks after saving — no prompt to the user:
 
 ```bash
 br create --title "Epic: <plan title>" --type=feature --priority=1 [--labels=<scope>]
