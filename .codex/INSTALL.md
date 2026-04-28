@@ -1,22 +1,61 @@
 # Installing Superpowers for Codex
 
-Quick setup to enable superpowers skills in Codex.
+Two install paths, depending on your Codex CLI version.
 
-## Installation
+## Option A — Native Codex plugin (Codex CLI ≥ 0.117.0, recommended)
 
-1. **Clone superpowers repository**:
+Codex CLI v0.117.0 (released March 2026) added a first-class plugin system. This repo ships a `.codex-plugin/plugin.json` manifest, so it can be installed as a native plugin.
+
+### Install via the plugin browser
+
+From any Codex CLI session:
+
+```
+/plugins
+```
+
+This opens the interactive plugin directory. Add this repo as a marketplace and install:
+
+```
+codex plugin marketplace add micahstubbs/superpowers
+```
+
+Then enable `superpowers` from the `/plugins` browser (Space toggles enabled state on a selected plugin).
+
+### What you get
+
+- All `skills/*/SKILL.md` are auto-discovered (Codex looks at `"skills": "./skills/"` in the manifest).
+- No bootstrap script required — Codex handles skill loading natively.
+- Updates flow through `git pull` on the marketplace repo plus `/plugins` refresh.
+
+### Verify
+
+```
+/plugins
+```
+
+`superpowers` should appear and toggle to enabled. Skills become available to the agent immediately.
+
+## Option B — Manual bootstrap (older Codex CLI, or no plugin system)
+
+If your Codex CLI predates the plugin system or you prefer manual setup, use the bootstrap script:
+
+1. **Clone this repo:**
+
    ```bash
    mkdir -p ~/.codex/superpowers
    cd ~/.codex/superpowers
    git clone https://github.com/obra/superpowers.git .
    ```
 
-2. **Create personal skills directory**:
+2. **Create a personal skills directory:**
+
    ```bash
    mkdir -p ~/.codex/skills
    ```
 
-3. **Update ~/.codex/AGENTS.md** to include this superpowers section:
+3. **Add this section to `~/.codex/AGENTS.md`:**
+
    ```markdown
    ## Superpowers System
 
@@ -25,11 +64,20 @@ Quick setup to enable superpowers skills in Codex.
    </EXTREMELY_IMPORTANT>
    ```
 
-## Verification
+4. **Verify:**
 
-Test the installation:
-```bash
-~/.codex/superpowers/.codex/superpowers-codex bootstrap
-```
+   ```bash
+   ~/.codex/superpowers/.codex/superpowers-codex bootstrap
+   ```
 
-You should see skill listings and bootstrap instructions. The system is now ready for use.
+   You should see skill listings and bootstrap instructions.
+
+## Which option should I use?
+
+| Codex CLI version | Recommended path     |
+|-------------------|----------------------|
+| ≥ 0.117.0         | Option A (native)    |
+| < 0.117.0         | Option B (bootstrap) |
+| Unsure            | Try Option A first; fall back to B if `/plugins` is missing |
+
+Check your version with `codex --version`.

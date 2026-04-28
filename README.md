@@ -73,7 +73,7 @@ The script will detect your platform and configure superpowers automatically.
 
 ## Installation
 
-**Note:** Installation differs by platform. Claude Code has a built-in plugin system. Codex and OpenCode require manual setup.
+**Note:** Installation differs by platform. Claude Code and Codex CLI (≥ 0.117.0) have built-in plugin systems. OpenCode and older Codex CLI versions require manual setup.
 
 ### Claude Code (via Plugin Marketplace)
 
@@ -116,13 +116,21 @@ Check that commands appear:
 
 ### Codex
 
-Tell Codex:
+**Native plugin (Codex CLI ≥ 0.117.0):** From a Codex session, run `/plugins`, then add this repo as a marketplace:
+
+```
+codex plugin marketplace add micahstubbs/superpowers
+```
+
+Enable `superpowers` from the `/plugins` browser. The `.codex-plugin/plugin.json` manifest points Codex at all 18 skills under `skills/`.
+
+**Manual bootstrap (older Codex CLI):** Tell Codex:
 
 ```
 Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md
 ```
 
-**Detailed docs:** [docs/README.codex.md](docs/README.codex.md)
+**Detailed docs:** [.codex/INSTALL.md](.codex/INSTALL.md) · [docs/README.codex.md](docs/README.codex.md)
 
 ### OpenCode
 

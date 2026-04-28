@@ -4,6 +4,19 @@ Complete guide for using Superpowers with OpenAI Codex.
 
 ## Quick Install
 
+### Native plugin (Codex CLI ≥ 0.117.0, recommended)
+
+From a Codex session:
+
+```
+/plugins
+codex plugin marketplace add micahstubbs/superpowers
+```
+
+Enable `superpowers` from the `/plugins` browser. Codex auto-discovers all skills via the `.codex-plugin/plugin.json` manifest at the repo root.
+
+### Bootstrap install (any Codex version)
+
 Tell Codex:
 
 ```
