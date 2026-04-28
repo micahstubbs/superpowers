@@ -15,6 +15,9 @@ Task tool (superpowers:code-reviewer):
   BASE_SHA: [commit before task]
   HEAD_SHA: [current commit]
   DESCRIPTION: [task summary]
+  BEADS_ISSUE: [optional — `bd-...` ID if tracked in beads; reviewer prepends it to the assessment so the controller can route updates]
 ```
 
-**Code reviewer returns:** Strengths, Issues (Critical/Important/Minor), Assessment
+**Code reviewer returns:** Strengths, Issues (Critical/Important/Minor), Assessment (with beads issue ID at top if provided)
+
+**Note:** Reviewers must NOT run `br` commands. The controller owns issue lifecycle and updates state based on the assessment.

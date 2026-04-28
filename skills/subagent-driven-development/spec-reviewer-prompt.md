@@ -14,6 +14,12 @@ Task tool (general-purpose):
 
     [FULL TEXT of task requirements]
 
+    ## Beads Issue (optional)
+
+    [If tracked in beads: `Beads issue: <id>` — otherwise omit]
+
+    Include the issue ID at the top of your report when provided. Do NOT run `br` commands — the controller updates issue state based on your verdict.
+
     ## What Implementer Claims They Built
 
     [From implementer's report]
@@ -56,6 +62,7 @@ Task tool (general-purpose):
     **Verify by reading code, not by trusting report.**
 
     Report:
+    - Beads issue ID (if one was provided)
     - ✅ Spec compliant (if everything matches after code inspection)
     - ❌ Issues found: [list specifically what's missing or extra, with file:line references]
 ```

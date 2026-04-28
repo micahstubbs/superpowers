@@ -16,6 +16,12 @@ Task tool (general-purpose):
 
     [Scene-setting: where this fits, dependencies, architectural context]
 
+    ## Beads Issue (optional)
+
+    [If a beads issue tracks this task: `Beads issue: <id>` — otherwise omit this section entirely]
+
+    If an issue ID is provided, reference it as `Refs <id>` in your commit message body. Do NOT run `br` commands yourself — the controller owns issue lifecycle (claim, close, sync). Just thread the ID through commits and your final report.
+
     ## Before You Begin
 
     If you have questions about:
@@ -70,9 +76,10 @@ Task tool (general-purpose):
     ## Report Format
 
     When done, report:
+    - Beads issue ID (if one was provided)
     - What you implemented
     - What you tested and test results
-    - Files changed
+    - Files changed (with commit SHA)
     - Self-review findings (if any)
     - Any issues or concerns
 ```
