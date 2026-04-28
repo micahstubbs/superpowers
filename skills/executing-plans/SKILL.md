@@ -53,7 +53,7 @@ After all tasks complete and verified:
 
 When `br` (beads_rust) is available AND the project has a reachable `.beads/*.db`, **automatically** thread issue lifecycle through the existing process steps. Do not ask — beads is part of the user's workflow; if `br` is installed, use it. When unavailable, silently skip this section (TodoWrite alone is sufficient).
 
-If the dispatch passed `Beads epic: <id>`, use it; otherwise find the plan's mirrored issues with `br list --label superpowers` (or by parent epic from the plan's "## Issue Tracking" appendix).
+If the dispatch passed `Beads epic: <id>`, use it; otherwise find the plan's mirrored issues by reading the parent epic ID from the plan's "## Issue Tracking" appendix and listing its children (e.g., `br dep tree <epic-id>`).
 
 **Detect at start (Step 1):**
 

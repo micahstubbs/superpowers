@@ -167,13 +167,16 @@ command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode 
 git log <base>..HEAD --format=%B | grep -oE 'bd-[a-z0-9]+(\.[0-9]+)?' | sort -u
 ```
 
-For each ID found that is still `IN_PROGRESS`:
+For each ID found, close only if currently `in_progress` (avoids "already closed" errors when an upstream skill closed it earlier):
 
 ```bash
-br close <id> -r "Delivered in <merge-sha-or-pr-link>"
+status=$(br show "$id" --json 2>/dev/null | jq -r .status)
+if [ "$status" = "in_progress" ]; then
+  br close "$id" -r "Delivered in <merge-sha-or-pr-link>"
+fi
 ```
 
-Then `br sync --flush-only`.
+Then `br sync --flush-only`. **Verify with `br show <id>` after the close** — `br update --status` has a known display bug where the echo can show a misleading title or wrong status delta even though the database write is correct.
 
 **For option 4 (discard):** flag the issues rather than closing them — the work didn't ship.
 

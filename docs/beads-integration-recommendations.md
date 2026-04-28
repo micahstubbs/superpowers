@@ -93,8 +93,11 @@ The plan document gets an **"## Issue Tracking"** appendix listing the IDs, and 
 
 ```bash
 # If beads mode and issue IDs were captured by the upstream skill (writing-plans / sda-d / executing-plans):
-git log <merge-base>..HEAD --format=%H | xargs -I{} br orphans --commit {}
-# OR explicitly: close every IN_PROGRESS issue whose ID appears in commit messages on the merged range
+# Close every in_progress issue whose ID appears in commit messages on the merged range.
+git log <merge-base>..HEAD --format=%B | grep -oE 'bd-[a-z0-9]+(\.[0-9]+)?' | sort -u | while read id; do
+  status=$(br show "$id" --json 2>/dev/null | jq -r .status)
+  [ "$status" = "in_progress" ] && br close "$id" -r "Delivered in <merge-sha>"
+done
 ```
 
 The skill's existing **Quick Reference table (line 152-160)** gains a fifth column: "Close beads issues" (✓ for options 1/2/4, — for option 3 keep-as-is).
