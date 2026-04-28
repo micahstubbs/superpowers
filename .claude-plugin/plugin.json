@@ -1,13 +1,13 @@
 {
   "name": "superpowers",
   "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "author": {
     "name": "Micah Stubbs",
     "email": "dev@micah.fyi"
   },
-  "homepage": "https://github.com/obra/superpowers",
-  "repository": "https://github.com/obra/superpowers",
+  "homepage": "https://github.com/micahstubbs/superpowers",
+  "repository": "https://github.com/micahstubbs/superpowers",
   "license": "MIT",
   "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows"]
 }

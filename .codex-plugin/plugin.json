@@ -1,13 +1,13 @@
 {
   "name": "superpowers",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Core skills library for Codex CLI: TDD, debugging, collaboration patterns, and proven techniques",
   "author": {
     "name": "Micah Stubbs",
     "email": "dev@micah.fyi"
   },
-  "homepage": "https://github.com/obra/superpowers",
-  "repository": "https://github.com/obra/superpowers",
+  "homepage": "https://github.com/micahstubbs/superpowers",
+  "repository": "https://github.com/micahstubbs/superpowers",
   "license": "MIT",
   "keywords": ["skills", "tdd", "debugging", "collaboration", "best-practices", "workflows"],
   "skills": "./skills/",
@@ -17,6 +17,6 @@
     "longDescription": "Bundles proven skills for Codex agents — brainstorming, test-driven development, systematic debugging, requesting and receiving code review, executing plans, subagent-driven development, and more. Each skill is a self-contained workflow the agent invokes when relevant.",
     "developerName": "Micah Stubbs",
     "category": "Productivity",
-    "websiteURL": "https://github.com/obra/superpowers"
+    "websiteURL": "https://github.com/micahstubbs/superpowers"
   }
 }
