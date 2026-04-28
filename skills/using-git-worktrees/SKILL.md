@@ -82,6 +82,8 @@ project=$(basename "$(git rev-parse --show-toplevel)")
 
 ### 2. Create Worktree
 
+**Branch naming:** When a beads issue ID is in scope (e.g., the work was scoped to `bd-uh7c`), prefer `<issue-id>-<short-desc>` as the branch name (e.g., `bd-uh7c-codex-plugin`). Self-documenting; lets `br show <id>` link back to the workspace via commits.
+
 ```bash
 # Determine full path
 case $LOCATION in

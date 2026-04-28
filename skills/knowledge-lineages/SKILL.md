@@ -123,10 +123,14 @@ project-root/
 
 **Affects:** `path/to/file.ts`, `path/to/other.ts`
 
+**Beads:** bd-xxxx, bd-xxxx.1   <!-- optional; cross-reference issues where this was decided/implemented -->
+
 **Tags:** #category1 #category2
 
 ---
 ```
+
+The optional `**Beads:**` line lets future sessions follow the audit trail in both directions: the decision explains *why* the issue was worked, and the issue carries the *what was actually done*. Omit when not applicable.
 
 ## Examples
 

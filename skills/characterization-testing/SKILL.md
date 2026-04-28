@@ -357,6 +357,8 @@ You should be able to answer:
 
 **If you can't answer these, write more characterization tests.**
 
+**For each unexpected discovery (security bug, weird edge case, undocumented behavior):** if `br` is available, automatically file a `br create --type=bug --title "<discovery>"` so the finding isn't lost when the session ends. The plaintext-password example above is exactly the kind of thing that should become a tracked issue. Don't open one for every captured behavior — only the surprises and bugs.
+
 ## Integration with Other Skills
 
 **After characterization testing:**

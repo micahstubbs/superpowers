@@ -110,6 +110,8 @@ FOR multi-item feedback:
   4. Verify no regressions
 ```
 
+**For review items needing multi-session work** (significant refactor, new bug class surfaced, broader architectural concern): if `br` is available, automatically file a follow-up issue (`br create --type=bug --priority=2 --title "<review item>" --description "From review of <PR/branch>: <quote>"`) and continue with the immediately-fixable items in this session. Don't auto-create issues for every review nit — only for items that won't ship in this PR.
+
 ## When To Push Back
 
 Push back when:
