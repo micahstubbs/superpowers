@@ -94,6 +94,44 @@ git commit -m "feat: add specific feature"
 - Reference relevant skills with @ syntax
 - DRY, YAGNI, TDD, frequent commits
 
+## Issue Tracking (Optional Beads Integration)
+
+When `br` (beads_rust) is available AND the project (or any ancestor) contains a `.beads/*.db`, you can mirror plan tasks to beads issues so the executor (subagent-driven-development or executing-plans) can pick them up and track lifecycle.
+
+**Detect at start:**
+
+```bash
+command -v br >/dev/null && br ready --json >/dev/null 2>&1 && echo "beads mode on"
+```
+
+If beads mode is on, after saving the plan ask: **"Mirror this plan into beads issues now?"** If yes:
+
+```bash
+# One epic for the plan
+br create --title "Epic: <plan title>" --type=feature --priority=1 [--labels=<scope>]
+
+# One task per Task N in the plan, with the epic as parent
+br create --title "<task name>" --type=task --priority=2 --parent=<epic-id>
+
+# Encode any ordering the plan declares (e.g., "Task 3 depends on Task 2")
+br dep add <task-N+1> <task-N>
+
+br sync --flush-only
+```
+
+Append an **"## Issue Tracking"** section to the saved plan listing the IDs:
+
+```markdown
+## Issue Tracking
+
+- Epic: bd-xxxx
+- Task 1: bd-xxxx.1
+- Task 2: bd-xxxx.2
+- ...
+```
+
+When beads mode is off (or the user declines), skip this entire section — the plan works without it.
+
 ## Execution Handoff
 
 After saving the plan, offer execution choice:
@@ -110,7 +148,9 @@ After saving the plan, offer execution choice:
 - **REQUIRED SUB-SKILL:** Use superpowers:subagent-driven-development
 - Stay in this session
 - Fresh subagent per task + code review
+- If issues were mirrored above, pass `Beads epic: <id>` so the sub-skill threads issue lifecycle
 
 **If Parallel Session chosen:**
 - Guide them to open new session in worktree
 - **REQUIRED SUB-SKILL:** New session uses superpowers:executing-plans
+- If issues were mirrored above, the new session can claim them directly via `br ready`
