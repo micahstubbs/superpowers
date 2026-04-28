@@ -1,6 +1,6 @@
 {
   "name": "superpowers",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "description": "Core skills library for Codex CLI: TDD, debugging, collaboration patterns, and proven techniques",
   "author": {
     "name": "Jesse Vincent",
