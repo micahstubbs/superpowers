@@ -122,7 +122,7 @@ Check that commands appear:
 codex plugin marketplace add micahstubbs/superpowers
 ```
 
-Enable `superpowers` from the `/plugins` browser. The `.codex-plugin/plugin.json` manifest points Codex at all 18 skills under `skills/`.
+Enable `superpowers` from the `/plugins` browser. The `.codex-plugin/plugin.json` manifest points Codex at all 19 skills under `skills/`.
 
 **Manual bootstrap (older Codex CLI):** Tell Codex:
 
@@ -173,6 +173,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/obra/superp
 
 **Collaboration** 
 - **brainstorming** - Socratic design refinement
+- **ask-user-question** - Structured one-question-at-a-time requirements interviews for Codex and other agents
 - **writing-plans** - Detailed implementation plans
 - **executing-plans** - Batch execution with checkpoints
 - **dispatching-parallel-agents** - Concurrent subagent workflows

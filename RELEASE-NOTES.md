@@ -1,5 +1,19 @@
 # Superpowers Release Notes
 
+## v4.3.2 (2026-06-17)
+
+### New Features
+
+**Structured Ask User Question skill for Codex**
+
+Added `ask-user-question`, a one-question-at-a-time requirements interview skill. It guides agents to inspect context before asking, present concrete options with tradeoffs, and use Codex `request_user_input` when available with a markdown fallback otherwise.
+
+### Integration
+
+- `brainstorming` now delegates structured requirements questions to `superpowers:ask-user-question`, especially for Codex CLI sessions.
+- `/brainstorm` command guidance now points Codex CLI question turns at `superpowers:ask-user-question`.
+- Codex bootstrap tool mapping now maps Claude-style `AskUserQuestion` / `AskUserQuestions` to Codex `request_user_input` when available.
+
 ## v4.0.3 (2025-12-26)
 
 ### Improvements

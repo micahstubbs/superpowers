@@ -58,6 +58,17 @@ else
 fi
 echo ""
 
+# Test: use ask-user-question
+echo ">>> Test 5: use-ask-user-question"
+if "$SCRIPT_DIR/run-test.sh" "ask-user-question" "$PROMPTS_DIR/use-ask-user-question.txt"; then
+    PASSED=$((PASSED + 1))
+    RESULTS="$RESULTS\nPASS: use-ask-user-question"
+else
+    FAILED=$((FAILED + 1))
+    RESULTS="$RESULTS\nFAIL: use-ask-user-question"
+fi
+echo ""
+
 echo "=== Summary ==="
 echo -e "$RESULTS"
 echo ""

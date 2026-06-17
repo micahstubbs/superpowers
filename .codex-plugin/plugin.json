@@ -1,6 +1,6 @@
 {
   "name": "superpowers",
-  "version": "4.3.1",
+  "version": "4.3.2",
   "description": "Core skills library for Codex CLI: TDD, debugging, collaboration patterns, and proven techniques",
   "author": {
     "name": "Micah Stubbs",
@@ -14,7 +14,7 @@
   "interface": {
     "displayName": "Superpowers",
     "shortDescription": "Skills library: TDD, debugging, collaboration patterns",
-    "longDescription": "Bundles proven skills for Codex agents — brainstorming, test-driven development, systematic debugging, requesting and receiving code review, executing plans, subagent-driven development, and more. Each skill is a self-contained workflow the agent invokes when relevant.",
+    "longDescription": "Bundles proven skills for Codex agents — brainstorming, structured requirements interviews, test-driven development, systematic debugging, requesting and receiving code review, executing plans, subagent-driven development, and more. Each skill is a self-contained workflow the agent invokes when relevant.",
     "developerName": "Micah Stubbs",
     "category": "Productivity",
     "websiteURL": "https://github.com/micahstubbs/superpowers"

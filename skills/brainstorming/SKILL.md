@@ -15,6 +15,7 @@ Start by understanding the current project context, then ask questions one at a 
 
 **Understanding the idea:**
 - Check out the current project state first (files, docs, recent commits)
+- Use `superpowers:ask-user-question` for the requirements interview when structured choices would help, especially in Codex CLI
 - Ask questions one at a time to refine the idea
 - Prefer multiple choice questions when possible, but open-ended is fine too
 - Only one question per message - if a topic needs more exploration, break it into multiple questions
@@ -49,6 +50,7 @@ Start by understanding the current project context, then ask questions one at a 
 
 - **One question at a time** - Don't overwhelm with multiple questions
 - **Multiple choice preferred** - Easier to answer than open-ended when possible
+- **Structured interview support** - When using Codex CLI, map structured questions through `superpowers:ask-user-question`; it will use `request_user_input` when available and markdown fallback otherwise
 - **YAGNI ruthlessly** - Remove unnecessary features from all designs
 - **Explore alternatives** - Always propose 2-3 approaches before settling
 - **Incremental validation** - Present design in sections, validate each
