@@ -66,8 +66,44 @@ $ br show bd-uh7c.1
 
 ---
 
+## 2026-06-17T01:15 - Verify beads database locality before creating issues
+
+**Problem**: A close/session workflow and an earlier issue-creation workflow considered using `br`, but `br ready` in this checkout resolved to a beads database outside `/home/m/clone/superpowers`.
+
+**Root Cause**: `br` can discover a database from an ancestor or adjacent configured workspace. A successful `br ready` does not prove the current project owns the issue database.
+
+**Lesson**: Before creating or updating beads issues from a project workflow, verify that a `.beads/*.db` exists under the current project root or that the discovered database is intentionally associated with the current repository.
+
+**Solution**: Skipped issue creation for this repo after confirming there was no project-local `.beads` database and the ready issues were unrelated.
+
+**Prevention**:
+- Check for project-local `.beads/*.db` before mutating issue state.
+- Treat `br ready` alone as insufficient proof of project ownership.
+- If the discovered database is unrelated, do not create close-session or implementation issues.
+
+---
+
+## 2026-06-17T01:15 - Run release-wide diff checks before tagging
+
+**Problem**: The release review found trailing whitespace in a previously generated Markdown/TeX report artifact when running `git diff --check origin/main..HEAD`.
+
+**Root Cause**: Earlier focused checks covered the new skill commit, but the final release tag included an older documentation report commit too. Generated report artifacts can carry formatting issues even when their own PDF layout verification passes.
+
+**Lesson**: Before tagging, run checks across the whole release range, not only the latest feature commit.
+
+**Solution**: Removed trailing whitespace from the Markdown source, regenerated the `m2p` artifact set, and committed the cleaned Markdown, TeX, and PDF together.
+
+**Prevention**:
+- Run `git diff --check <base>..HEAD` before release tagging.
+- For `m2p` reports, regenerate and commit Markdown, TeX, and PDF together after source cleanup.
+- Do not tag until release-wide checks pass.
+
+---
+
 ## Meta-Lessons
 
 - **Documentation matters**: Install instructions that worked for upstream won't work for forks without updates
 - **Two-step processes need both steps documented**: Users need to know about marketplace registration before plugin installation
 - **Don't trust tool echo output for state confirmation**: Tools can lie about what they did. Verify state with a separate read after every write, especially in loops or automation. The cost of one extra read is far less than the cost of corrupting many records on a bad assumption.
+- **Verify tracker ownership before mutation**: A tracker command succeeding in a checkout does not prove that tracker belongs to the checkout.
+- **Check the full release range before tagging**: Tagging should be gated by release-wide checks, not only latest-commit checks.
