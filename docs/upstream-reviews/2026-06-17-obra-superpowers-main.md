@@ -1,11 +1,11 @@
 # Upstream Review: obra/superpowers main
 
-**Date:** 2026-06-17  
-**Local project:** `micahstubbs/superpowers` at `53789b7` (`v4.3.1-1-g53789b7`)  
-**Upstream:** `obra/superpowers` at `b62616f` (`v6.0.2`)  
-**Merge base:** `b9e16498b9b6`  
-**Comparison examined:** `HEAD..upstream/main` after fetching `https://github.com/obra/superpowers.git`  
-**Divergence:** local branch is 35 commits ahead and 371 commits behind upstream  
+**Date:** 2026-06-17
+**Local project:** `micahstubbs/superpowers` at `53789b7` (`v4.3.1-1-g53789b7`)
+**Upstream:** `obra/superpowers` at `b62616f` (`v6.0.2`)
+**Merge base:** `b9e16498b9b6`
+**Comparison examined:** `HEAD..upstream/main` after fetching `https://github.com/obra/superpowers.git`
+**Divergence:** local branch is 35 commits ahead and 371 commits behind upstream
 **Diff scale:** 223 files changed, 23,273 insertions, 14,209 deletions
 
 ## Executive Summary
