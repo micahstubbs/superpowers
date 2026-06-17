@@ -1,0 +1,560 @@
+\documentclass[twocolumn,10pt,letterpaper]{article}
+
+% -- Page geometry --
+\usepackage[
+  top=0.72in,
+  bottom=0.62in,
+  left=0.58in,
+  right=0.58in,
+  columnsep=0.22in
+]{geometry}
+
+% -- Beautiful typography: Century Schoolbook --
+\usepackage[T1]{fontenc}
+\usepackage{tgschola}              % TeX Gyre Schola (Century Schoolbook)
+\usepackage[scaled=0.82]{beramono} % Bera Mono for code
+\usepackage{microtype}             % Microtypographic refinements
+\usepackage{setspace}              % Line spacing control
+\setstretch{1.02}                  % Compact leading for dense two-column reports
+
+% -- Packages --
+\usepackage{xurl}        % Allow URL breaks at any character (load before hyperref)
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}    % Professional tables
+\usepackage{tabularx}    % Width-constrained tables
+\usepackage{enumitem}    % List customization
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{balance}
+\usepackage{stfloats}    % Enable [h] placement for table* in two-column layout
+\usepackage{titlesec}    % Section heading customization
+\usepackage{listings}    % Code blocks with line wrapping
+
+% -- Paragraph spacing (no indent, modest skip) --
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.24em plus 0.06em minus 0.04em}
+\setlength{\emergencystretch}{1em}  % Extra stretch to avoid overfull hboxes in narrow columns
+
+% -- Code listings with line wrapping --
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakautoindent=true,
+  postbreak=\mbox{\textcolor{accentrule}{$\hookrightarrow$}\space},
+  columns=fullflexible,
+  keepspaces=true,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{codebg},
+  framesep=3pt,
+  aboveskip=0.5em,
+  belowskip=0.5em,
+  xleftmargin=4pt,
+  xrightmargin=0pt,
+}
+
+% -- Colors --
+\definecolor{linkblue}{HTML}{1D4ED8}
+\definecolor{headergray}{HTML}{1F2937}
+\definecolor{rulegray}{HTML}{D1D5DB}
+\definecolor{titlebg}{HTML}{111827}
+\definecolor{accentrule}{HTML}{6B7280}
+\definecolor{brandred}{HTML}{8B2635}
+\definecolor{codebg}{HTML}{F3F4F6}    % Very light gray for code backgrounds
+
+% -- Hyperlinks --
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkblue,
+    urlcolor=linkblue,
+    citecolor=linkblue,
+    pdfstartview=FitH
+}
+
+% -- Section numbering: Roman > Alph > Arabic > alph, no decimals --
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\renewcommand{\theparagraph}{\alph{paragraph}}
+\makeatletter
+\@addtoreset{subsection}{section}
+\@addtoreset{subsubsection}{subsection}
+\@addtoreset{paragraph}{subsubsection}
+\makeatother
+
+% -- Section headings --
+\titleformat{\section}
+  {\large\bfseries\color{titlebg}}
+  {\thesection.}{0.5em}{}
+  [\vspace{-0.3em}{\color{accentrule}\rule{\columnwidth}{0.5pt}}]
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{headergray}}
+  {\thesubsection.}{0.4em}{}
+\titleformat{\subsubsection}
+  {\small\bfseries\itshape\color{headergray}}
+  {\thesubsubsection.}{0.4em}{}
+\titleformat{\paragraph}[runin]
+  {\small\bfseries\color{headergray}}
+  {\theparagraph)}{0.4em}{}[.\hspace{0.4em}]
+\titlespacing*{\section}{0pt}{0.75em}{0.25em}
+\titlespacing*{\subsection}{0pt}{0.5em}{0.15em}
+\titlespacing*{\subsubsection}{0pt}{0.38em}{0.1em}
+\titlespacing*{\paragraph}{0pt}{0.4em}{0em}
+
+% -- Lists: compact, elegant --
+\setlist{nosep, leftmargin=1.1em, topsep=0.2em, itemsep=0.05em}
+\setlist[itemize]{label={\small\textcolor{accentrule}{\textbullet}}}
+\setlist[enumerate]{label={\small\textcolor{headergray}{\arabic*.}}}
+
+% -- Tables: tighter, small text --
+\renewcommand{\arraystretch}{1.15}
+
+% -- Header/footer (pages 2+) --
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[L]{\footnotesize\color{headergray}\textit{Upstream Review: obra/superpowers main}}
+\renewcommand{\footrulewidth}{0.3pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height \footrulewidth\hfill}}
+% Brand mark footer: CaseMirror wordmark left, page number right (both burgundy)
+\fancyfoot[L]{\footnotesize\textbf{\color{headergray}CaseMirror}}
+\fancyfoot[R]{\footnotesize\color{headergray}\thepage}
+
+% -- Page 1 style: footer only, no header rule --
+\fancypagestyle{firstpage}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0.3pt}%
+  \renewcommand{\footrule}{\hbox to\headwidth{\color{rulegray}\leaders\hrule height 0.3pt\hfill}}%
+  \fancyfoot[L]{\footnotesize\textbf{\color{headergray}CaseMirror}}%
+  \fancyfoot[R]{\footnotesize\color{headergray}\thepage}%
+}
+
+% -- Column rule --
+\setlength{\columnseprule}{0.15pt}
+\renewcommand{\columnseprulecolor}{\color{rulegray}}
+
+% -- Title --
+\title{\vspace{-2.3em}\Large\bfseries\color{titlebg} Upstream Review: obra/superpowers main\vspace{-0.6em}}
+\author{\normalsize CaseMirror Research \\ \footnotesize\itshape\href{https://casemirror.ai}{\textcolor{headergray}{casemirror.ai}}}
+\date{{\footnotesize\color{headergray} \today}}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{firstpage}
+\vspace{-0.95em}
+
+
+\textbf{Date:} 2026-06-17  
+
+\textbf{Local project:} \texttt{micahstubbs/\penalty0 superpowers} at \texttt{53789\penalty0 b\penalty0 7} (\texttt{v\penalty0 4.\penalty0 3.\penalty0 1-\penalty0 1-\penalty0 g\penalty0 53789\penalty0 b\penalty0 7})  
+
+\textbf{Upstream:} \texttt{obra/\penalty0 superpowers} at \texttt{b\penalty0 62616\penalty0 f} (\texttt{v\penalty0 6.\penalty0 0.\penalty0 2})  
+
+\textbf{Merge base:} \texttt{b\penalty0 9\penalty0 e\penalty0 16498\penalty0 b\penalty0 9\penalty0 b\penalty0 6}  
+
+\textbf{Comparison examined:} \texttt{HEAD.\penalty0 .\penalty0 upstream/\penalty0 main} after fetching \texttt{https:\penalty0 /\penalty0 /\penalty0 github.\penalty0 com/\penalty0 obra/\penalty0 superpowers.\penalty0 git}  
+
+\textbf{Divergence:} local branch is 35 commits ahead and 371 commits behind upstream  
+
+\textbf{Diff scale:} 223 files changed, 23,273 insertions, 14,209 deletions
+
+
+\subsection{Executive Summary}
+
+Upstream has moved from the local fork's v4.3.1 lineage to v6.0.2. The delta is not a narrow patch series. It is a broad product and methodology release train that adds new agent harnesses, a visual brainstorming companion, substantial subagent-driven-development changes, new packaging and marketplace tooling, cross-platform hook fixes, and a new eval/testing strategy.
+
+
+The local project is not merely stale; it has fork-specific functionality that upstream does not contain. The most important local-only work is the \texttt{br} / beads integration, Micah-owned package metadata, local Codex CLI packaging, local documentation/review artifacts, and four local skills not present upstream: \texttt{characterization-\penalty0 testing}, \texttt{context-\penalty0 7}, \texttt{knowledge-\penalty0 lineages}, and \texttt{strangler-\penalty0 fig-\penalty0 pattern}.
+
+
+If this project were updated by a direct merge, it would import many real fixes and new capabilities, but it would also delete or overwrite local fork behavior. The right approach is selective porting or an intentional rebase with a preservation checklist.
+
+
+\subsection{High-Level Release Delta}
+
+\vspace{0.4em}
+\noindent
+\small
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Area} & \textbf{Local project} & \textbf{Upstream v6.0.2} \\
+\midrule
+Version & \texttt{4.\penalty0 3.\penalty0 1} plus local fork commits & \texttt{6.\penalty0 0.\penalty0 2} \\
+Primary owner metadata & Micah Stubbs / \texttt{micahstubbs/\penalty0 superpowers} & Jesse Vincent / \texttt{obra/\penalty0 superpowers} \\
+Agent harness support & Claude Code, Codex, OpenCode, Cursor-oriented fork work & Claude Code, Codex, OpenCode, Cursor, Gemini CLI, Copilot CLI, Kimi Code, Pi, Antigravity \\
+Brainstorming & Text workflow, no current upstream visual server in local tree & Visual browser companion with zero-dependency server, auth, reconnect, sandboxing \\
+SDD review & Local v4-era two-reviewer lineage plus beads additions & Single task reviewer, file-based handoffs, model pinning, final broad review \\
+Planning & Local beads issue mirroring added & Global constraints, interfaces blocks, task right-sizing, pre-flight conflict review \\
+Worktrees & Local fork includes beads-aware changes & Harness-native worktree preference, project-local \texttt{.\penalty0 worktrees/\penalty0 }, safer cleanup \\
+Testing & In-tree shell and Claude Code tests; fork docs & Plugin-code tests in tree; behavior evals moved out to separate eval repo \\
+Packaging & Local Codex plugin metadata and \texttt{.\penalty0 codex} bootstrap CLI & Native Codex plugin hook metadata; Codex marketplace sync script; no legacy \texttt{.\penalty0 codex} CLI \\
+\bottomrule
+\end{tabularx}
+\vspace{0.4em}
+
+\subsection{Upstream New Functionality}
+
+\subsubsection{New Harnesses and Platform Integrations}
+
+Upstream adds or substantially updates support for several agent harnesses:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \textbf{Gemini CLI}: root \texttt{gemini-\penalty0 extension.\penalty0 json}, root \texttt{GEMINI.\penalty0 md}, and \texttt{skills/\penalty0 using-\penalty0 superpowers/\penalty0 references/\penalty0 gemini-\penalty0 tools.\penalty0 md}. The tool reference documents Gemini equivalents for common Claude Code actions and notes the lack of subagent support.
+  \item \textbf{GitHub Copilot CLI}: \texttt{session\penalty0 Start} context injection using Copilot CLI's \texttt{additional\penalty0 Context} format, plus \texttt{skills/\penalty0 using-\penalty0 superpowers/\penalty0 references/\penalty0 copilot-\penalty0 tools.\penalty0 md} and README install guidance.
+  \item \textbf{Kimi Code}: \texttt{.\penalty0 kimi-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, \texttt{docs/\penalty0 README.\penalty0 kimi.\penalty0 md}, and manifest tests.
+  \item \textbf{Pi}: \texttt{.\penalty0 pi/\penalty0 extensions/\penalty0 superpowers.\penalty0 ts}, with session-start registration and bootstrap injection for native skills.
+  \item \textbf{Antigravity (\texttt{agy})}: \texttt{skills/\penalty0 using-\penalty0 superpowers/\penalty0 references/\penalty0 antigravity-\penalty0 tools.\penalty0 md} and tests under \texttt{tests/\penalty0 antigravity/\penalty0 }.
+  \item \textbf{Codex App and Codex plugin mirror}: \texttt{hooks/\penalty0 hooks-\penalty0 codex.\penalty0 json}, \texttt{hooks/\penalty0 session-\penalty0 start-\penalty0 codex}, richer Codex tool docs, and \texttt{scripts/\penalty0 sync-\penalty0 to-\penalty0 codex-\penalty0 plugin.\penalty0 sh} for mirroring upstream into the OpenAI Codex plugin marketplace.
+  \item \textbf{OpenCode}: a one-line plugin install path, runtime bootstrap caching, action-based tool mapping, modernized tests, and install caveats.
+  \item \textbf{Cursor}: native hook metadata in \texttt{hooks/\penalty0 hooks-\penalty0 cursor.\penalty0 json}, a \texttt{.\penalty0 cursor-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, and Windows hook execution fixes.
+\end{itemize}
+
+Net effect: upstream is now a multi-harness framework rather than a Claude/Codex/OpenCode-focused skills repository.
+
+
+\subsubsection{Visual Brainstorming Companion}
+
+Upstream adds a browser-based brainstorming companion centered in \texttt{skills/\penalty0 brainstorming/\penalty0 scripts/\penalty0 } and \texttt{skills/\penalty0 brainstorming/\penalty0 visual-\penalty0 companion.\penalty0 md}.
+
+
+Major capabilities:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Generates browser screens for mockups, diagrams, comparisons, and visual questions during brainstorming.
+  \item Runs a local server from the brainstorming skill directory rather than global plugin paths.
+  \item Uses a zero-dependency Node server (\texttt{server.\penalty0 cjs}) with built-in HTTP, WebSocket framing, file watching, and crypto primitives.
+  \item Writes server metadata so agents can recover the URL and port even when stdout is hidden.
+  \item Reconnects browser clients after restarts and shows live/paused state.
+  \item Reuses a project/session port and key across restarts.
+  \item Extends idle timeout to four hours in v6.
+  \item Adds visual branding assets: \texttt{assets/\penalty0 app-\penalty0 icon.\penalty0 png} and \texttt{assets/\penalty0 superpowers-\penalty0 small.\penalty0 svg}.
+\end{itemize}
+
+This is the largest user-facing new feature. It introduces scripts, browser UI, tests, and security considerations not present in the local fork.
+
+
+\subsubsection{Visual Companion Security Model}
+
+Upstream v6 hardens the visual companion:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Per-session key required for every HTTP and WebSocket request.
+  \item Key carried in the URL and stored in a tab-scoped cookie.
+  \item File server refuses symlinks, dotfiles, resource-fork files, path traversal, and files outside the content sandbox.
+  \item No-store and deny-framing headers are sent.
+  \item Key-bearing files are owner-only.
+  \item \texttt{stop-\penalty0 server.\penalty0 sh} checks process ownership before signaling.
+  \item Windows lifecycle handling avoids unsafe POSIX ownership assumptions.
+\end{itemize}
+
+These are real security fixes. If the local fork ever imports the visual companion, these hardening changes should be imported with it.
+
+
+\subsubsection{Subagent-Driven Development Rewrite}
+
+Upstream rewrites the SDD review loop:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Replaces separate spec-reviewer and code-quality-reviewer prompts with one \texttt{task-\penalty0 reviewer-\penalty0 prompt.\penalty0 md}.
+  \item One reviewer now returns both spec-compliance and code-quality verdicts.
+  \item Adds a "cannot verify from diff" path for requirements that need controller-side checking.
+  \item Adds one broad whole-branch review at the end.
+  \item Adds file-based task handoff scripts: \texttt{skills/\penalty0 subagent-\penalty0 driven-\penalty0 development/\penalty0 scripts/\penalty0 task-\penalty0 brief} and \texttt{review-\penalty0 package}.
+  \item Requires model selection to be explicit on dispatch.
+  \item Forbids controller prompts that suppress reviewer findings or pre-rate severity.
+  \item Makes reviewers read-only and skeptical of implementer rationales.
+  \item Moves implementer reports into files and requires stronger evidence, including red/green evidence where TDD applies.
+  \item Adds a progress ledger concept for resuming after context loss.
+\end{itemize}
+
+This is a material methodology change. It is intended to reduce cost and improve reviewer independence.
+
+
+\subsubsection{Writing Plans and Planning Workflow}
+
+Upstream planning changes include:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \texttt{Global Constraints} block for requirements that apply across tasks.
+  \item Per-task \texttt{Interfaces} blocks describing task inputs and outputs.
+  \item Task right-sizing guidance.
+  \item Pre-flight plan review to surface conflicts before Task 1.
+  \item Continued emphasis on design/spec docs under \texttt{docs/\penalty0 superpowers/\penalty0 specs/\penalty0 } and implementation plans under \texttt{docs/\penalty0 superpowers/\penalty0 plans/\penalty0 }.
+\end{itemize}
+
+The v5.0.0 release briefly made SDD mandatory on capable harnesses, but v5.0.5 restored a user choice between subagent-driven and inline execution after plan writing.
+
+
+\subsubsection{Worktree Behavior}
+
+Upstream rewrites \texttt{using-\penalty0 git-\penalty0 worktrees} and \texttt{finishing-\penalty0 a-\penalty0 development-\penalty0 branch}:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Detects when already inside a linked worktree.
+  \item Defers to a harness-native worktree tool when available.
+  \item Requires consent before creating worktrees.
+  \item Stops using the legacy global \texttt{\textasciitilde{}/\penalty0 .\penalty0 config/\penalty0 superpowers/\penalty0 worktrees/\penalty0 } path.
+  \item Uses project-local \texttt{.\penalty0 worktrees/\penalty0 } or \texttt{worktrees/\penalty0 } by default.
+  \item Cleans up only worktrees with clear superpowers provenance.
+  \item Handles detached HEAD with a reduced finish menu.
+  \item Removes stale Cursor references and fixes step numbering.
+\end{itemize}
+
+\subsubsection{Code Review Consolidation}
+
+Upstream removes the named \texttt{superpowers:\penalty0 code-\penalty0 reviewer} agent and folds its persona and checklist into \texttt{skills/\penalty0 requesting-\penalty0 code-\penalty0 review/\penalty0 code-\penalty0 reviewer.\penalty0 md}.
+
+
+Consequences:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Skills dispatch \texttt{general-\penalty0 purpose} with a self-contained prompt template.
+  \item The old \texttt{agents/\penalty0 code-\penalty0 reviewer.\penalty0 md} file is deleted upstream.
+  \item Codex and Copilot workaround docs for named agents are simplified because no named agent ships.
+\end{itemize}
+
+\subsubsection{Evaluation and Testing Strategy}
+
+Upstream moves skill-behavior testing out of most in-tree shell tests and into a drill-based eval harness. That eval harness was briefly a submodule, then v6.0.2 stopped shipping it inside the plugin because it broke installs.
+
+
+Current upstream position:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item In-tree \texttt{tests/\penalty0 } are mostly plugin-code and harness integration tests.
+  \item Skill-behavior evals live in a separate eval repository.
+  \item \texttt{.\penalty0 pre-\penalty0 commit-\penalty0 config.\penalty0 yaml} and \texttt{scripts/\penalty0 lint-\penalty0 shell.\penalty0 sh} add shell linting.
+  \item New tests cover brainstorm server auth, lifecycle, browser launch, WebSocket protocol, branding, Codex plugin sync, Kimi manifests, Pi extension, Antigravity tools, shell lint, and hooks.
+\end{itemize}
+
+\subsubsection{Contributor and Governance Changes}
+
+Upstream adds:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \texttt{CLAUDE.\penalty0 md}, symlinked/instruction-aligned with \texttt{AGENTS.\penalty0 md}.
+  \item \texttt{CODE\_\penalty0 OF\_\penalty0 CONDUCT.\penalty0 md}.
+  \item GitHub issue templates for bugs, features, and platform support.
+  \item A PR template requiring disclosure of model, harness, version, plugins, and whether content was human-written.
+  \item Guidance that PRs target \texttt{dev}, not \texttt{main}.
+  \item A new \texttt{docs/\penalty0 porting-\penalty0 to-\penalty0 a-\penalty0 new-\penalty0 harness.\penalty0 md} guide.
+\end{itemize}
+
+The contributor docs are explicitly designed to filter low-quality AI-generated PRs and platform-support submissions that do not load the bootstrap at session start.
+
+
+\subsection{Upstream Bugfixes}
+
+\subsubsection{Hook and Shell Portability}
+
+Upstream contains many cross-platform hook fixes:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Quotes \texttt{CLAUDE\_\penalty0 PLUGIN\_\penalty0 ROOT} safely for Windows and Linux.
+  \item Replaces POSIX-incompatible \texttt{\$\{BASH\_\penalty0 SOURCE[\penalty0 0]\penalty0 :\penalty0 -\penalty0 \$0\}} in shell hooks.
+  \item Replaces heredoc expansion with \texttt{printf} to avoid Bash 5.3 hangs.
+  \item Uses portable \texttt{\#!/\penalty0 usr/\penalty0 bin/\penalty0 env bash} shebangs.
+  \item Routes Windows Cursor hooks through \texttt{run-\penalty0 hook.\penalty0 cmd}.
+  \item Stops firing SessionStart bootstrap on resumed sessions.
+  \item Pipes Windows hook \texttt{printf} through \texttt{cat} to absorb broken-pipe write errors.
+  \item Adds dedicated \texttt{hooks/\penalty0 session-\penalty0 start} and \texttt{hooks/\penalty0 session-\penalty0 start-\penalty0 codex} paths.
+\end{itemize}
+
+\subsubsection{Brainstorm Server Reliability}
+
+Upstream fixes:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Node 22 ESM/CommonJS breakage by using \texttt{server.\penalty0 cjs}.
+  \item Owner-PID false positives when the owner process is another user or the WSL grandparent process exits early.
+  \item Windows/MSYS2 lifecycle assumptions.
+  \item Server stop behavior: SIGTERM, wait, SIGKILL fallback, and verification that the process actually died.
+  \item Background launch and foreground fallback behavior on Windows/Git Bash.
+  \item Liveness checking before reusing an existing server.
+  \item UTF-8 charset declaration on served pages.
+  \item Idle cleanup to avoid orphaned processes.
+\end{itemize}
+
+\subsubsection{Codex, OpenCode, Cursor, and Other Harness Fixes}
+
+Upstream fixes:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Codex native skill discovery, Codex App compatibility, named-agent mapping docs, deprecated flag names, \texttt{wait\_\penalty0 agent} mapping, and private/jokey review wording.
+  \item Codex plugin version display when packaged plugins lack a root \texttt{package.\penalty0 json}.
+  \item Codex plugin sync exclusions for \texttt{.\penalty0 gitmodules} and \texttt{.\penalty0 pre-\penalty0 commit-\penalty0 config.\penalty0 yaml}.
+  \item OpenCode skill path consistency, native skills directory usage, bootstrap injection as a first user message rather than repeated system messages, \texttt{OPENCODE\_\penalty0 CONFIG\_\penalty0 DIR} handling, and tool mapping for \texttt{Todo\penalty0 Write}.
+  \item Cursor install command and manifest behavior.
+  \item Copilot CLI context injection.
+\end{itemize}
+
+\subsubsection{Skill Content Fixes}
+
+Upstream fixes:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \texttt{writing-\penalty0 plans} nested code fences.
+  \item \texttt{test-\penalty0 driven-\penalty0 development} reference to testing anti-patterns.
+  \item \texttt{writing-\penalty0 skills} frontmatter wording, changing "only two fields" to "two required fields".
+  \item \texttt{systematic-\penalty0 debugging} accidentally triggering Claude Code extended-thinking keyword detection.
+  \item \texttt{using-\penalty0 superpowers} listing a nonexistent "debugging" skill.
+  \item Hardcoded personal paths in worktree docs.
+  \item Stale docs references and platform-specific terminology.
+\end{itemize}
+
+\subsubsection{Test and Review Fixes}
+
+Upstream fixes:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item SDD integration tests that were silently bailing before assertions.
+  \item Skill-recognition tests with case variations.
+  \item Worktree path policy tests.
+  \item Code review tests that plant concrete security defects and require detection.
+  \item Document review tests, later moved into drill scenarios.
+\end{itemize}
+
+\subsection{Other Upstream Changes and Removals}
+
+\subsubsection{Removed From Upstream}
+
+Upstream removes several items currently present locally:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item Legacy slash command stubs: \texttt{commands/\penalty0 brainstorm.\penalty0 md}, \texttt{commands/\penalty0 execute-\penalty0 plan.\penalty0 md}, and \texttt{commands/\penalty0 write-\penalty0 plan.\penalty0 md}.
+  \item Named agent file: \texttt{agents/\penalty0 code-\penalty0 reviewer.\penalty0 md}.
+  \item Local \texttt{.\penalty0 codex/\penalty0 } installer and bootstrap CLI files.
+  \item Shared \texttt{lib/\penalty0 skills-\penalty0 core.\penalty0 js}.
+  \item Old platform directories under \texttt{platforms/\penalty0 }.
+  \item Many local docs and examples, including language examples and local session summaries.
+  \item \texttt{skills/\penalty0 characterization-\penalty0 testing}, \texttt{skills/\penalty0 context-\penalty0 7}, \texttt{skills/\penalty0 knowledge-\penalty0 lineages}, and \texttt{skills/\penalty0 strangler-\penalty0 fig-\penalty0 pattern}.
+\end{itemize}
+
+The last four are local-only capabilities in this fork. They should be explicitly preserved if they still matter.
+
+
+\subsubsection{Packaging and Metadata Changes}
+
+Upstream changes package identity and marketplace metadata:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \texttt{.\penalty0 claude-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, \texttt{.\penalty0 codex-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, \texttt{.\penalty0 cursor-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, \texttt{.\penalty0 kimi-\penalty0 plugin/\penalty0 plugin.\penalty0 json}, and \texttt{gemini-\penalty0 extension.\penalty0 json} report version \texttt{6.\penalty0 0.\penalty0 2}.
+  \item Author/repository/homepage point to Jesse Vincent and \texttt{obra/\penalty0 superpowers}.
+  \item Codex plugin metadata adds hooks, capabilities, default prompts, brand color, icon, logo, privacy policy, and terms URL.
+  \item Root \texttt{package.\penalty0 json} and \texttt{.\penalty0 version-\penalty0 bump.\penalty0 json} support release/version workflows.
+  \item \texttt{README.\penalty0 md} is rewritten around the upstream multi-harness installation story.
+\end{itemize}
+
+Those changes conflict with local fork metadata that intentionally points to Micah Stubbs and \texttt{micahstubbs/\penalty0 superpowers}.
+
+
+\subsubsection{Documentation Reorganization}
+
+Upstream moves long-form design and plan artifacts into \texttt{docs/\penalty0 superpowers/\penalty0 specs/\penalty0 } and \texttt{docs/\penalty0 superpowers/\penalty0 plans/\penalty0 }. It adds plans/specs for visual brainstorming, zero-dependency brainstorm server, Codex App compatibility, worktree rewrite, eval migration, Pi extension, SDD task-scoped review dispatch, and visual companion hardening.
+
+
+Local fork documents such as \texttt{docs/\penalty0 beads-\penalty0 integration-\penalty0 recommendations.\penalty0 md}, session summaries, and the v4.3.0 beads integration review are absent upstream.
+
+
+\subsection{Local-Only Functionality at Risk}
+
+The local fork contains material functionality that upstream does not:
+
+
+\begin{itemize}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+  \item \textbf{Beads integration}: local commits add optional \texttt{br} issue IDs, plan-to-issue mirroring, execution integration, and beads guidance across several skills.
+  \item \textbf{Micah-owned metadata}: plugin manifests, homepage, repository, author, and marketplace identity point to Micah's fork.
+  \item \textbf{Codex CLI bootstrap files}: local \texttt{.\penalty0 codex/\penalty0 } files and \texttt{superpowers-\penalty0 codex} script exist locally but upstream removed this approach in favor of native Codex plugin discovery and hooks.
+  \item \textbf{Extra local skills}: \texttt{characterization-\penalty0 testing}, \texttt{context-\penalty0 7}, \texttt{knowledge-\penalty0 lineages}, and \texttt{strangler-\penalty0 fig-\penalty0 pattern}.
+  \item \textbf{Fork documentation}: session summaries, \texttt{docs/\penalty0 beads-\penalty0 integration-\penalty0 recommendations.\penalty0 md}, multi-pass review docs, and review artifacts.
+  \item \textbf{Double-shot-latte marketplace work}: local marketplace plugin registration and related lessons.
+\end{itemize}
+
+Any merge or rebase should preserve or consciously retire these local decisions.
+
+
+\subsection{Porting Decisions by Category}
+
+Rewrite or apply the cross-platform hook fixes. They are mostly low-risk portability and reliability improvements. If the visual companion is imported, also rewrite/apply the v6 security fixes; those fixes are essential for any local server.
+
+
+Rewrite or apply SDD, writing-plans, and worktree changes selectively. They are valuable, but each must be reconciled with local beads issue tracking and local workflow assumptions.
+
+
+Apply new harness support selectively. Kimi, Pi, Antigravity, Gemini, Copilot, and upstream Codex hooks may or may not fit this fork's scope. Any Codex hook work should preserve Micah-owned metadata and local plugin identity.
+
+
+Ignore or fork-adapt upstream's Codex marketplace sync script, because it targets upstream ownership. Ignore upstream metadata replacement, local-skill removals, and beads-doc removals unless the fork intentionally retires those choices. If importing evals work, follow v6.0.2 and do not ship the eval submodule in the plugin.
+
+
+\subsection{Recommended Update Strategy}
+
+Do not direct-merge upstream into this fork without a preservation plan. The upstream diff deletes local functionality and rewrites package identity.
+
+
+A careful port should first preserve fork identity and local-only skills in a guard list. Next, port the low-risk hook and shell fixes. After that, port SDD and writing-plans changes while reapplying beads integration. New harnesses should be imported only if they matter for this fork. If the visual companion is imported, bring the v6 security model and test suite with it. Keep the upstream eval harness out of the distributed plugin, matching v6.0.2. Finally, run focused tests for hooks, plugin metadata, SDD, writing-plans, and any imported harnesses.
+
+
+\subsection{Evidence Reviewed}
+
+Evidence came from a fresh fetch of \texttt{https:\penalty0 /\penalty0 /\penalty0 github.\penalty0 com/\penalty0 obra/\penalty0 superpowers.\penalty0 git}, the \texttt{HEAD.\penalty0 .\penalty0 .\penalty0 upstream/\penalty0 main} divergence count, upstream-only and local-only git logs, \texttt{HEAD.\penalty0 .\penalty0 upstream/\penalty0 main} diff stats and name-status output, upstream \texttt{RELEASE-\penalty0 NOTES.\penalty0 md} sections v5.0.0 through v6.0.2, local and upstream plugin manifests, and local/upstream skill directory inventories.
+
+
+
+\balance
+\end{document}
